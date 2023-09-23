@@ -20,7 +20,12 @@ proceedButton.addEventListener('click', (e) => {
 
     display.innerHTML = "";
 
-    generateOutput(beltLength, perforationStep, gCode, BELT_TEETH_TYPES[beltTeethType]);
+    if (beltLength !== "" & perforationStep !== "" & gCode !== "") {
+        if (beltLength > perforationStep) {
+            generateOutput(beltLength, perforationStep, gCode, BELT_TEETH_TYPES[beltTeethType]);
+        }
+    }
+
 });
 
 // resetButton.addEventListener('click', (e) => {
