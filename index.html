@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,61 +9,51 @@
 
     <link rel="stylesheet" href="./public/style.css">
 </head>
-<body>  
+
+<body>
     <main class="main relative">
         <div class="flex justify-center items-center max-[620px]:flex-col">
             <div class="flex flex-col basis-1/2 p-5 h-screen relative">
                 <form class="flex flex-col w-full">
                     <div class="flex flex-col">
-                        <label for="belt_length">Длина ремня:</label>
-                        <input 
-                            class="px-4 py-2 rounded-sm"
-                            name="belt_length"
-                            id="belt_length_input"
-                            type="number"    
-                        >
+                        <label class="mb-2 mt-1 flex align-middle gap-1 text-gray-700" for="belt_length">
+                            Длина ремня (мм):
+                        </label>
+                        <input class="px-4 py-2 rounded-sm" name="belt_length" id="belt_length_input" type="number">
                     </div>
                     <div class="flex flex-col  mt-2">
-                        <label for="perf_step">Шаг:</label>
-                        <input 
-                            class="px-4 py-2 rounded-sm" 
-                            type="number" 
-                            name="perf_step"
-                            id="perf_step_input"
-                        >
+                        <label class="mb-2 mt-1 flex align-middle gap-1 text-gray-700" for="perf_step">
+                            Шаг (мм):
+                        </label>
+                        <input class="px-4 py-2 rounded-sm" type="number" name="perf_step" id="perf_step_input">
                     </div>
                     <div class="flex flex-col mt-2">
-                        <label for="g_code">G-код, к которому нужно добавить A:</label>
-                        <textarea 
-                            class="w-full resize-vertical rounded-sm" 
-                            name="g_code"
-                            id="g_code_input"
-                        ></textarea>
+                        <label class="mb-2 mt-1 flex align-middle gap-1 text-gray-700" for="g_code">
+                            G-код:
+                        </label>
+                        <textarea class="w-full resize-vertical rounded-sm" name="g_code" id="g_code_input"
+                            placeholder="G-код, к которому нужно добавить шаг по A"></textarea>
                     </div>
 
                     <div class="flex flex-col mt-2">
-                        <label for="">Тип зуба: </label>
-                        <select 
-                            name="T_select"
-                            id="belt_teeth_input"
-                            class="rounded-sm"
-                        >
+                        <label class="mb-2 mt-1" for="">Тип зуба: </label>
+                        <select name="T_select" id="belt_teeth_input" class="rounded-sm">
                             <option value="T5">T5/T10</option>
-                            <!-- <option value="T10">T10</option> -->
+                            <!-- <option value="H">H</option> -->
                         </select>
                     </div>
 
-                    <small class="mt-3 p-3 text-green-950 border-solid border-l-2 border-green-600 bg-green-300 rounded-sm">
-                        <b>A шаг</b> = <b>шаг перф</b> * <b>А коэффициент</b><br/>
-                        <b>А макс</b> = <b>длина ремня</b> / <b>шаг перф</b> * <b>А шаг</b>
+                    <small
+                        class="mt-3 p-3 text-green-950 border-solid border-l-2 border-green-600 bg-green-300 rounded-sm">
+
+                        
+                        <b>A шаг</b> = <b>шаг перфорации</b> * <b>А постояная для определенного типа зуба</b><br />
+                        <b>А макс</b> = <b>длина ремня</b> / <b>шаг перфорации</b> * <b>А шаг</b>
                     </small>
 
                     <div class="flex gap-2">
-                        <button 
-                            class="block mt-3 px-4 py-2 bg-blue-400 text-blue-950 rounded-sm active:bg-blue-500"
-                            id="proceed_button"
-                            type="submit"
-                        >
+                        <button class="block mt-3 px-4 py-2 bg-blue-400 text-blue-950 rounded-sm active:bg-blue-500"
+                            id="proceed_button" type="submit">
                             Выполнить
                         </button>
                         <!-- <button 
@@ -76,24 +67,19 @@
                 </form>
             </div>
 
-            <div 
-                class="flex flex-col relative p-4 min-[620px]:basis-1/2 bg-black h-screen max-[620px]:w-full max-[620px]:min-h-full" 
-                id="display"
-            >
+            <div class="flex flex-col relative p-4 min-[620px]:basis-1/2 bg-black h-screen max-[620px]:w-full max-[620px]:min-h-full"
+                id="display">
             </div>
         </div>
 
         <div class="fixed bottom-4 right-4">
-            <button 
-                class="block mt-4 px-4 py-2 bg-yellow-400 text-yellow-950 rounded-sm active:bg-yellow-500"
-                id="copyToClipboard_button"
-                type="submit"
-            >
+            <button class="block mt-4 px-4 py-2 bg-yellow-400 text-yellow-950 rounded-sm active:bg-yellow-500"
+                id="copyToClipboard_button" type="submit">
                 Скопировать
             </button>
         </div>
 
-    </main> 
+    </main>
 
 
 
@@ -137,4 +123,5 @@
 
     <script src="./main.js"></script>
 </body>
+
 </html>
