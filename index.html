@@ -12,23 +12,23 @@
 
 <body>
     <main class="main relative">
-        <div class="flex justify-center items-center max-[620px]:flex-col">
+        <div class="flex justify-center items-center max-[620px]:flex-col max-[620px]:justify-start">
             <div class="flex flex-col basis-1/2 p-5 h-screen relative">
                 <form class="flex flex-col w-full">
                     <div class="flex flex-col">
-                        <label class="mb-2 mt-1 flex align-middle gap-1 text-gray-700" for="belt_length">
+                        <label class="mb-1 mt-1 flex align-middle gap-1 text-gray-700" for="belt_length">
                             Длина ремня (мм):
                         </label>
                         <input class="px-4 py-2 rounded-sm" name="belt_length" id="belt_length_input" type="number">
                     </div>
                     <div class="flex flex-col  mt-2">
-                        <label class="mb-2 mt-1 flex align-middle gap-1 text-gray-700" for="perf_step">
+                        <label class="mb-1 mt-1 flex align-middle gap-1 text-gray-700" for="perf_step">
                             Шаг (мм):
                         </label>
                         <input class="px-4 py-2 rounded-sm" type="number" name="perf_step" id="perf_step_input">
                     </div>
                     <div class="flex flex-col mt-2">
-                        <label class="mb-2 mt-1 flex align-middle gap-1 text-gray-700" for="g_code">
+                        <label class="mb-1 mt-1 flex align-middle gap-1 text-gray-700" for="g_code">
                             G-код:
                         </label>
                         <textarea class="w-full resize-vertical rounded-sm" name="g_code" id="g_code_input"
@@ -36,7 +36,7 @@
                     </div>
 
                     <div class="flex flex-col mt-2">
-                        <label class="mb-2 mt-1" for="">Тип зуба: </label>
+                        <label class="mb-1 mt-1 text-gray-700" for="T_select">Тип зуба: </label>
                         <select name="T_select" id="belt_teeth_input" class="rounded-sm">
                             <option value="T5">T5/T10</option>
                             <!-- <option value="H">H</option> -->
@@ -44,11 +44,42 @@
                     </div>
 
                     <small
-                        class="mt-3 p-3 text-green-950 border-solid border-l-2 border-green-600 bg-green-300 rounded-sm">
+                        class="flex flex-col gap-4 mt-3 p-5 text-green-950 border-solid border-l-2 border-green-600 bg-green-300 rounded-sm">
 
+                        <div class="flex gap-1 items-center text-center italic">
+                            <div>
+                                A<sub>шаг</sub>
+                                <span>=</span>
+                            </div>
+                            <div>
+                                шаг перфорации
+                                <span>×</span>
+                            </div>
+                            <div>
+                                А коэффициент
+                            </div>
+                            
+                        </div>
+
+                        <div class="flex gap-1 items-center text-center italic">
+                            <div>
+                                <span>A<sub>макс</sub> =</span>
+                            </div>
+                            <div>
+                                <div class="border-solid border-b-2 border-black">
+                                    <span>длина ремня</span>
+                                </div>
+                                <div>
+                                    <span>шаг перфорации</span>
+                                </div>
+                            </div>
+                            <div>
+                                <span>× A<sub>шаг</sub></span>
+                            </div>
+                        </div>
                         
-                        <b>A шаг</b> = <b>шаг перф</b> * <b>А коэф</b><br />
-                        <b>А макс</b> = <b>длина ремня</b> / <b>шаг перф</b> * <b>А шаг</b>
+                        <!-- <b>A шаг</b> = <b>шаг перфорации</b> * <b>А постояная для определенного типа зуба</b><br />
+                        <b>А макс</b> = <b>длина ремня</b> / <b>шаг перфорации</b> * <b>А шаг</b> -->
                     </small>
 
                     <div class="flex gap-2">
