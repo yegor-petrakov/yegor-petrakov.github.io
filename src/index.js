@@ -122,7 +122,7 @@ proceedButton.addEventListener('click', (e) => {
             let output = ``;
 
             for (let a = aStep; a <= aMax; a += aStep) {
-                output += "\n" + gCode.value + "\n" + `A-${a}` + "\n";
+                output += "\n" + gCode.value + "\n" + `A-${a}`;
             }
 
             code.innerText = output;
