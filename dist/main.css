@@ -1,7 +1,7 @@
 .result-wrapper {
     display: block;
     width: 50%;
-    height: 100vh;
+    height: 100dvh;
     padding: .5em 1em;
     overflow-y: scroll;
 }
