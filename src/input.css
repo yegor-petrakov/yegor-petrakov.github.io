@@ -29,3 +29,11 @@ span.ripple {
         opacity: 0;
     }
 }
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}

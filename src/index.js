@@ -166,83 +166,92 @@ const inputContainer = document.querySelector('.input-container');
 const beltLength = document.getElementById('belt_length');
 const beltLengthSpan = document.getElementById('belt_length_span');
 
-beltLengthSpan.classList.add(
-    "after:content-['*']",
-    "after:ml-0.5",
-    "after:text-red-500"
-);
+// beltLengthSpan.classList.add(
+//     "after:content-['*']",
+//     "after:ml-0.5",
+//     "after:text-red-500"
+// );
 
-beltLength.addEventListener('change', (e) => {
-    if (e.target.value !== "") {
-        beltLengthSpan.classList.remove(
-            "after:content-['*']",
-            "after:ml-0.5",
-            "after:text-red-500"
-        );
-    } else {
-        beltLengthSpan.classList.add(
-            "after:content-['*']",
-            "after:ml-0.5",
-            "after:text-red-500"
-        );
-    }
-});
+// beltLength.addEventListener('change', (e) => {
+//     if (e.target.value !== "") {
+//         beltLengthSpan.classList.remove(
+//             "after:content-['*']",
+//             "after:ml-0.5",
+//             "after:text-red-500"
+//         );
+//     } else {
+//         beltLengthSpan.classList.add(
+//             "after:content-['*']",
+//             "after:ml-0.5",
+//             "after:text-red-500"
+//         );
+//     }
+// });
 
 const perfStep = document.getElementById('perf_step');
 const perfStepSpan = document.getElementById('perf_step_span')
 
-perfStepSpan.classList.add(
-    "after:content-['*']",
-    "after:ml-0.5",
-    "after:text-red-500"
-);
+// perfStepSpan.classList.add(
+//     "after:content-['*']",
+//     "after:ml-0.5",
+//     "after:text-red-500"
+// );
 
-perfStep.addEventListener('change', (e) => {
-    if (e.target.value !== "") {
-        perfStepSpan.classList.remove(
-            "after:content-['*']",
-            "after:ml-0.5",
-            "after:text-red-500"
-        );
-    } else {
-        perfStepSpan.classList.add(
-            "after:content-['*']",
-            "after:ml-0.5",
-            "after:text-red-500"
-        );
-    }
-});
+// perfStep.addEventListener('change', (e) => {
+//     if (e.target.value !== "") {
+//         perfStepSpan.classList.remove(
+//             "after:content-['*']",
+//             "after:ml-0.5",
+//             "after:text-red-500"
+//         );
+//     } else {
+//         perfStepSpan.classList.add(
+//             "after:content-['*']",
+//             "after:ml-0.5",
+//             "after:text-red-500"
+//         );
+//     }
+// });
 
 const gCode = document.getElementById('g_code');
 const gCodeSpan = document.getElementById('g_code_span')
 
-gCodeSpan.classList.add(
-    "after:content-['*']",
-    "after:ml-0.5",
-    "after:text-red-500"
-);
+// gCodeSpan.classList.add(
+//     "after:content-['*']",
+//     "after:ml-0.5",
+//     "after:text-red-500"
+// );
 
-gCode.addEventListener('change', (e) => {
-    if (e.target.value !== "") {
-        gCodeSpan.classList.remove(
-            "after:content-['*']",
-            "after:ml-0.5",
-            "after:text-red-500"
-        );
-    } else {
-        gCodeSpan.classList.add(
-            "after:content-['*']",
-            "after:ml-0.5",
-            "after:text-red-500"
-        );
-    }
-});
+// gCode.addEventListener('change', (e) => {
+//     if (e.target.value !== "") {
+//         gCodeSpan.classList.remove(
+//             "after:content-['*']",
+//             "after:ml-0.5",
+//             "after:text-red-500"
+//         );
+//     } else {
+//         gCodeSpan.classList.add(
+//             "after:content-['*']",
+//             "after:ml-0.5",
+//             "after:text-red-500"
+//         );
+//     }
+// });
 
 const teethSelect = document.getElementById('teeth_select');
 
 const teethType = {
-    "T5/T10": 6
+    "T5": 6,
+    "T10": 6,
+    "H": 6.075
 }
+
+const aManual = document.getElementById('a_manual');
+
+const manualIcon = document.getElementById('switch-button-manual-icon');
+const backIcon = document.getElementById('switch-button-back-icon');
+
+let isManual = false;
 
 /*
     ----------------------------------------
@@ -264,19 +273,36 @@ result.classList.add("result");
 const proceedButton = document.getElementById('proceed-button');
 const resetButton = document.getElementById('reset-button');
 const copyButton = document.getElementById('copy-button');
+const switchButton = document.getElementById('switch-button');
 
 proceedButton.addEventListener('click', (e) => {
     e.preventDefault();
 
-    if (beltLength.value !== "" & perfStep.value !== "" & gCode.value !== "") {
-        if (beltLength.value >= perfStep.value) {
+    const beltLengthValue = parseFloat(beltLength.value);
+    const perfStepValue = parseFloat(perfStep.value);
+    const aManualValue = parseFloat(aManual.value);
+
+    const metaStep = document.getElementById('meta-step');
+    const metaMax = document.getElementById('meta-max');
+    const metaCoef = document.getElementById('meta-coef');
+
+    const statusOK = document.getElementById('status-ok');
+    const statusAwaits = document.getElementById('status-awaits');
+    const statusError = document.getElementById('status-error');
+
+    let teethTypeValue = isManual ? aManualValue : teethType[teethSelect.value];
+
+    console.log(teethTypeValue);
+
+    if (beltLengthValue !== "" & perfStepValue !== "" & gCode.value !== "") {
+        if (beltLengthValue >= perfStepValue) {
             result.classList.add('text-green-500', "weight-700", "overflow-y-scroll");
 
             resultContainer.innerHTML = "";
 
 
-            const aStep = perfStep.value * teethType[teethSelect.value];
-            const aMax = (beltLength.value / perfStep.value) * aStep;
+            const aStep = perfStepValue * teethTypeValue;
+            const aMax = (beltLengthValue / perfStepValue) * aStep;
 
             let output = ``;
 
@@ -289,7 +315,13 @@ proceedButton.addEventListener('click', (e) => {
 
             resultWrapper.classList.add('is-shown');
 
+            metaStep.innerHTML = aStep;
+            metaMax.innerHTML = aMax;
+            metaCoef.innerHTML = teethTypeValue;
+
         }
+    } else {
+
     }
 });
 
@@ -298,6 +330,7 @@ resetButton.addEventListener('click', () => {
     perfStep.value = "";
     gCode.value = "";
     result.innerHTML = "";
+    aManual.value = "";
 });
 
 copyButton.addEventListener('click', (e) => {
@@ -308,6 +341,50 @@ copyButton.addEventListener('click', (e) => {
     document.execCommand("copy");
     textArea.remove();
 });
+
+
+switchButton.addEventListener('click', () => {
+
+    const teethTypeSpan = document.getElementById('teeth_type_span');
+
+    isManual = !isManual;
+
+    const manualInputSpan = document.createElement('span');
+    manualInputSpan.innerHTML = '(мм)';
+    manualInputSpan.classList.add('font-normal', 'text-gray-400');
+
+        
+    if (isManual) {
+        teethTypeSpan.innerHTML = "Коэффициент А "
+        teethTypeSpan.appendChild(manualInputSpan);
+
+        aManual.classList.add('show');
+        aManual.classList.remove('hide');
+        teethSelect.classList.add('hide');
+        teethSelect.classList.remove('show');
+
+        manualIcon.classList.remove('show');
+        manualIcon.classList.add('hide');
+        backIcon.classList.add('show');
+        backIcon.classList.remove('hide');
+    } else {
+        teethTypeSpan.innerHTML = "";
+        teethTypeSpan.innerHTML = "Тип зуба";
+
+        aManual.classList.add('hide');
+        aManual.classList.remove('show');
+        teethSelect.classList.remove('hide');
+        teethSelect.classList.add('show');
+
+        manualIcon.classList.add('show');
+        manualIcon.classList.remove('hide');
+        backIcon.classList.remove('show');
+        backIcon.classList.add('hide');
+    }
+
+});
+
+
 
 const closeButton = document.getElementById('close-button');
 
