@@ -350,7 +350,7 @@ switchButton.addEventListener('click', () => {
     isManual = !isManual;
 
     const manualInputSpan = document.createElement('span');
-    manualInputSpan.innerHTML = '(А для 1 мм)';
+    manualInputSpan.innerHTML = '(для 1 мм)';
     manualInputSpan.classList.add('font-normal', 'text-gray-400');
 
         
