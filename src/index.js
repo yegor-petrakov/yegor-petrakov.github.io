@@ -86,9 +86,12 @@ proceedButton.addEventListener('click', (e) => {
 
             let output = ``;
 
+            let a_max = 0;
+            
             setTimeout(() => {
                 for (let a = aStep; a <= aMax; a += aStep) {
                     output += gCode.value + "\n" + `A-${a}` + "\n";
+                    a_max += aStep;
                 }
     
                 result.innerText = output;
@@ -97,7 +100,7 @@ proceedButton.addEventListener('click', (e) => {
                 resultWrapper.classList.add('is-shown');
     
                 metaStep.innerHTML = aStep;
-                metaMax.innerHTML = aMax;
+                metaMax.innerHTML = a_max;
                 metaCoef.innerHTML = teethTypeValue;
             }, 400);
 
