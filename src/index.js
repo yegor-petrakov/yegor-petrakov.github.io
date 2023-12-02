@@ -12,77 +12,11 @@ const inputContainer = document.querySelector('.input-container');
 const beltLength = document.getElementById('belt_length');
 const beltLengthSpan = document.getElementById('belt_length_span');
 
-// beltLengthSpan.classList.add(
-//     "after:content-['*']",
-//     "after:ml-0.5",
-//     "after:text-red-500"
-// );
-
-// beltLength.addEventListener('change', (e) => {
-//     if (e.target.value !== "") {
-//         beltLengthSpan.classList.remove(
-//             "after:content-['*']",
-//             "after:ml-0.5",
-//             "after:text-red-500"
-//         );
-//     } else {
-//         beltLengthSpan.classList.add(
-//             "after:content-['*']",
-//             "after:ml-0.5",
-//             "after:text-red-500"
-//         );
-//     }
-// });
-
 const perfStep = document.getElementById('perf_step');
 const perfStepSpan = document.getElementById('perf_step_span')
 
-// perfStepSpan.classList.add(
-//     "after:content-['*']",
-//     "after:ml-0.5",
-//     "after:text-red-500"
-// );
-
-// perfStep.addEventListener('change', (e) => {
-//     if (e.target.value !== "") {
-//         perfStepSpan.classList.remove(
-//             "after:content-['*']",
-//             "after:ml-0.5",
-//             "after:text-red-500"
-//         );
-//     } else {
-//         perfStepSpan.classList.add(
-//             "after:content-['*']",
-//             "after:ml-0.5",
-//             "after:text-red-500"
-//         );
-//     }
-// });
-
 const gCode = document.getElementById('g_code');
 const gCodeSpan = document.getElementById('g_code_span')
-
-// gCodeSpan.classList.add(
-//     "after:content-['*']",
-//     "after:ml-0.5",
-//     "after:text-red-500"
-// );
-
-// gCode.addEventListener('change', (e) => {
-//     if (e.target.value !== "") {
-//         gCodeSpan.classList.remove(
-//             "after:content-['*']",
-//             "after:ml-0.5",
-//             "after:text-red-500"
-//         );
-//     } else {
-//         gCodeSpan.classList.add(
-//             "after:content-['*']",
-//             "after:ml-0.5",
-//             "after:text-red-500"
-//         );
-//     }
-// });
 
 const teethSelect = document.getElementById('teeth_select');
 
