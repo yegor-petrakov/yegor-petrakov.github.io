@@ -306,18 +306,20 @@ proceedButton.addEventListener('click', (e) => {
 
             let output = ``;
 
-            for (let a = aStep; a <= aMax; a += aStep) {
-                output += gCode.value + "\n" + `A-${a}` + "\n";
-            }
-
-            result.innerText = output;
-            resultContainer.append(result);
-
-            resultWrapper.classList.add('is-shown');
-
-            metaStep.innerHTML = aStep;
-            metaMax.innerHTML = aMax;
-            metaCoef.innerHTML = teethTypeValue;
+            setTimeout(() => {
+                for (let a = aStep; a <= aMax; a += aStep) {
+                    output += gCode.value + "\n" + `A-${a}` + "\n";
+                }
+    
+                result.innerText = output;
+                resultContainer.append(result);
+    
+                resultWrapper.classList.add('is-shown');
+    
+                metaStep.innerHTML = aStep;
+                metaMax.innerHTML = aMax;
+                metaCoef.innerHTML = teethTypeValue;
+            }, 400);
 
         }
     } else {
