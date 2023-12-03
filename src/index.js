@@ -72,8 +72,6 @@ proceedButton.addEventListener('click', (e) => {
 
     let teethTypeValue = isManual ? aManualValue : teethType[teethSelect.value];
 
-    console.log(teethTypeValue);
-
     if (beltLengthValue !== "" & perfStepValue !== "" & gCode.value !== "") {
         if (beltLengthValue >= perfStepValue) {
             result.classList.add('text-green-500', "weight-700", "overflow-y-scroll");
@@ -82,12 +80,11 @@ proceedButton.addEventListener('click', (e) => {
 
 
             const aStep = perfStepValue * teethTypeValue;
-            const aMax = (beltLengthValue / perfStepValue) * aStep;
+            const aMax = parseFloat((beltLengthValue / perfStepValue) * aStep);
 
             let output = ``;
-
             let a_max = 0;
-            
+
             setTimeout(() => {
                 for (let a = aStep; a <= aMax; a += aStep) {
                     output += gCode.value + "\n" + `A-${a}` + "\n";
@@ -103,6 +100,7 @@ proceedButton.addEventListener('click', (e) => {
                 metaMax.innerHTML = a_max;
                 metaCoef.innerHTML = teethTypeValue;
             }, 400);
+
 
         }
     } else {
@@ -135,7 +133,7 @@ switchButton.addEventListener('click', () => {
     isManual = !isManual;
 
     const manualInputSpan = document.createElement('span');
-    manualInputSpan.innerHTML = '(для 1 мм)';
+    manualInputSpan.innerHTML = '(мм)';
     manualInputSpan.classList.add('font-normal', 'text-gray-400');
 
         

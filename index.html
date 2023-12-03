@@ -64,21 +64,21 @@
                         Тип зуба
                     </span>
 
-                    <div class="flex items-center">
+                    <div class="flex">
                         <select id="teeth_select"
-                            class="show resize-y w-full rounded-md px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block sm:text-sm focus:ring-1">
+                            class="show resize-y w-full rounded-l-md px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block sm:text-sm focus:ring-1">
                             <option value="T5">T5</option>
                             <option value="T10">T10</option>
                             <!-- <option value="H">H</option> -->
                         </select>
 
-                        <input id="a_manual" type="number" name="a_manual"
+                        <input id="a_manual" type="number" name="a_manual" placeholder="Коэф. А для 1 мм"
                             onkeyup="if (this.value < 0) this.value *= -1" onblur="if (this.value < 0) this.value *= -1"
-                            class="hide px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1" />
+                            class="hide px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-l-md sm:text-sm focus:ring-1" />
 
 
                         <button id="switch-button"
-                            class="flex items-center font-semibold shadow-sm bg-green-500 h-10 px-2 ml-1 text-white rounded-md max-w-min hover:shadow-md transition-all"
+                            class="flex items-center font-semibold shadow-sm bg-green-500 px-2 text-white rounded-r-md max-w-min hover:shadow-md transition-all"
                             type="button">
                             <span 
                                 class="show flex drop-shadow-md pt-1 pr-2 pl-1"
@@ -150,16 +150,10 @@
                             Обнулить
                         </span>
                     </button>
+                    
                 </div>
-<!-- 
-                <div>
-                    <span class="flex gap-2">Статус: 
-                        <span id="status-ok" class="hide font-semibold text-green-500">OK</span>
-                        <span id="status-awaits" class="show font-semibold text-gray-500">...</span>
-                        <span id="status-error" class="hide font-semibold text-red-500">Описание ошибки</span>
-                    </span>
-                </div> -->
             </form>
+
         </div>
 
 
