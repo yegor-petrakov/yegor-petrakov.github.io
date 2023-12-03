@@ -21,8 +21,7 @@ const gCodeSpan = document.getElementById('g_code_span')
 const teethSelect = document.getElementById('teeth_select');
 
 const teethType = {
-    "T5": 6,
-    "T10": 6,
+    "T5/T10": 6,
     "H": 6.075
 }
 
