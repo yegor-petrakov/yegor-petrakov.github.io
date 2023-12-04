@@ -98,7 +98,7 @@ proceedButton.addEventListener('click', (e) => {
                 metaStep.innerHTML = aStep;
                 metaMax.innerHTML = a_max;
                 metaCoef.innerHTML = teethTypeValue;
-            }, 400);
+            }, 250);
 
 
         }
