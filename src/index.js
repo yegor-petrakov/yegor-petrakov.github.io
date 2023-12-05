@@ -22,7 +22,7 @@ const teethSelect = document.getElementById('teeth_select');
 
 const teethType = {
     "T5/T10": 6,
-    "H": 6.075
+    "H": 6.07559055118
 }
 
 const aManual = document.getElementById('a_manual');
