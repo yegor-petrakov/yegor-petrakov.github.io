@@ -6,26 +6,6 @@
     display: none;
 }
 
-
-
-.m1-shown {
-    display: block;
-}
-
-.m2-shown {
-    display: block;
-}
-
-.m1-hidden {
-    display: none;
-}
-
-.m2-hidden {
-    display: none;
-}
-
-
-
 button {
     position: relative;
     overflow: hidden;
