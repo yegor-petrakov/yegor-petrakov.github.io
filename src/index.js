@@ -177,7 +177,7 @@ proceedButtonNew.addEventListener('click', (e) => {
             let output = ``;
 
             setTimeout(() => {
-                for (let a = aStep; a <= aFinalValue; a += aStep) {
+                for (let a = aStep; parseInt(a) <= aFinalValue; a += aStep) {
                     output += gCodeNew.value + "\n" + `A${a}` + "\n";
                 }
     
