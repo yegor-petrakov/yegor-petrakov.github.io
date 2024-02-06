@@ -118,7 +118,7 @@ proceedButton.addEventListener('click', (e) => {
             let a_max = 0;
 
             setTimeout(() => {
-                for (let a = aStep; a <= aMax; a += aStep) {
+                for (let a = aStep; parseInt(a) <= aMax; a += aStep) {
                     output += gCode.value + "\n" + `A-${a}` + "\n";
                     a_max += aStep;
                 }
