@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loop Calculator</title>
+  <link rel="stylesheet" href="/public/output.css">
+  <script defer src="./src/app.js"></script>
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+</head>
+<body class=" bg-zinc-800 text-white min-h-screen flex justify-center">
+  <div class="w-full grid md:grid-cols-2">
+    
+    <!-- Form -->
+    <div class="overflow-y-scroll h-full max-h-screen">
+      <div class="max-w-full border-b border-zinc-600">
+        <div class="flex border-zinc-600 w-fit">
+          <button id="tab-btn-1" class="cursor-pointer px-3 py-1 text-zinc-300 text-sm">Форма №1</button>
+          <button id="tab-btn-2" class="cursor-pointer px-3 py-1 text-zinc-300 text-sm">Форма №2</button>
+          <div class="bg-zinc-600 w-[1px] h-10"></div>
+          <!-- <button id="tab-btn-3" class="cursor-pointer px-3 py-1 flex items-center gap-2 text-zinc-300 text-sm">
+            <span>Формулы</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info-icon lucide-info"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          </button> -->
+        </div>
+      </div>
+
+      <div id="tabs" class="p-4">
+        <div id="tab-1" class="tab active">
+            <form id="calc-form-machine-one" class="space-y-4">
+              <div>
+                <label for="length" class="block text-sm font-medium text-zinc-300">
+                  <span>Длина ремня</span>
+                  <span class="text-zinc-500">(мм)</span>
+                </label>
+                <input 
+                  type="number" 
+                  id="length" 
+                  name="length" 
+                  required 
+                  class="mt-1 w-full p-2 bg-zinc-700 text-white border border-zinc-600 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500" />
+              </div>
+              <div>
+                <label for="pitch" class="block text-sm font-medium text-zinc-300">
+                  <span>Шаг перфорации</span>
+                  <span class="text-zinc-500">(мм)</span>
+                </label>
+                <input 
+                  type="number" 
+                  id="pitch" 
+                  name="pitch" 
+                  required 
+                  class="mt-1 w-full p-2 bg-zinc-700 text-white border border-zinc-600 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500" />
+              </div>
+
+              <div>
+                <label for="prefixMachineOne" class="block text-sm font-medium text-zinc-300">
+                  <span>Префикс</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="prefixMachineOne" 
+                  name="prefixMachineOne" 
+                  value="A-"
+                  required 
+                  class="mt-1 w-full p-2 bg-zinc-700 text-white border border-zinc-600 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500" />
+              </div>
+
+              <div>
+                <label for="teeth-type" class="block text-sm font-medium text-zinc-300">Тип зуба</label>
+                <div class="flex items-center gap-2 mt-1">
+                  
+                  <!-- Either this one -->
+                  <select 
+                    id="teethType" 
+                    name="teeth-type" 
+                    class="w-full p-2 bg-zinc-700 text-white border border-zinc-600 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500"
+                  >
+                    <option value="6">T5/T10 (A=6)</option>
+                    <option value="6.07559055118">H (A≈6.07559055118)</option>
+                  </select>
+
+                  <!-- Either this one -->
+                  <!-- <input 
+                    type="text" 
+                    id="angleValue" 
+                    name="angleValue"
+                    required 
+                    class="mt-1 w-full p-2 bg-zinc-700 text-white border border-zinc-600 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500" 
+                  /> -->
+
+
+                  <!-- Should be controlled by this button -->
+                  <!-- <button 
+                    type="button" 
+                    class="border border-zinc-700 py-2 px-3 cursor-pointer rounded-md bg-transparent hover:bg-zinc-700 transition-colors duration-200 text-gray-400 self-stretch"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                         width="24" 
+                         height="24" 
+                         viewBox="0 0 24 24" 
+                         fill="none" 
+                         stroke="currentColor" 
+                         stroke-width="2" 
+                         stroke-linecap="round" 
+                         stroke-linejoin="round" 
+                         class="lucide lucide-file-pen-line-icon w-5 h-5">
+                      <path d="m18 5-2.414-2.414A2 2 0 0 0 14.172 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2"/>
+                      <path d="M21.378 12.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/>
+                      <path d="M8 18h1"/>
+                    </svg>
+                  </button>
+                -->
+                </div>
+              </div>
+              
+              
+              
+              <div>
+                <label for="g-code" class="block text-sm font-medium text-zinc-300">G-код</label>
+                <textarea 
+                  id="gcode" 
+                  name="g-code" 
+                  rows="6"
+                  class="mt-1 w-full p-2 bg-zinc-700 text-white border border-zinc-600 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500 resize-y"
+                  placeholder="Введите фрагмент G-кода"
+                ></textarea>
+              </div>
+              
+              <div class="flex gap-2">
+                <button 
+                  type="submit" 
+                  class="bg-sky-600 text-white px-6 py-3 rounded-xl border-t border-sky-400 hover:bg-sky-700 transition flex items-center justify-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap-icon lucide-zap"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+                  <span>
+                    Выполнить
+                  </span>
+                </button>
+                <button>
+                <button 
+                  type="button" 
+                  class="bg-red-600 text-white px-6 py-3 rounded-xl border-t border-red-400 hover:bg-red-700 transition flex items-center justify-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-ccw-icon lucide-refresh-ccw"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg>
+                  <span>
+                    Обнулить
+                  </span>
+                </button>
+            
+      
+                
+      
+              </div>
+            </form>
+    
+        </div>
+      
+        <div id="tab-2" class="tab hidden">
+          <form id="calc-form-machine-two" class="space-y-4">
+
+      <form id="calc-form-machine-two" class="space-y-4">
+        <div class="flex items-center w-full gap-4">
+        <div class="w-full">
+          <label for="lengthMachineTwo" class="block text-sm font-medium text-zinc-300">
+            <span>Длина ремня</span>
+            <span class="text-zinc-500">(мм)</span>
+          </label>
+          <input 
+            type="number" 
+            id="lengthMachineTwo" 
+            name="lengthMachineTwo" 
+            required 
+            class="mt-1 w-full p-2 bg-zinc-700 text-white border border-zinc-600 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500" />
+        </div>
+
+        <div class="w-full">
+          <label for="angleMaxValue" class="block text-sm font-medium text-zinc-300">
+            <span>А конечное</span>
+          </label>
+          <input 
+            type="number" 
+            id="angleMaxValue" 
+            name="angleMaxValue" 
+            required 
+            class="mt-1 w-full p-2 bg-zinc-700 text-white border border-zinc-600 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500" />
+        </div>
+
+      </div>
+
+        <div>
+          <label for="pitchMachineTwo" class="block text-sm font-medium text-zinc-300">
+            <span>Шаг перфорации</span>
+            <span class="text-zinc-500">(мм)</span>
+          </label>
+          <input 
+            type="number" 
+            id="pitchMachineTwo" 
+            name="pitchMachineTwo" 
+            required 
+            class="mt-1 w-full p-2 bg-zinc-700 text-white border border-zinc-600 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500" />
+        </div>
+
+        <div>
+          <label for="prefixMachineTwo" class="block text-sm font-medium text-zinc-300">
+            <span>Префикс</span>
+          </label>
+          <input 
+            type="text" 
+            id="prefixMachineTwo" 
+            name="prefixMachineTwo" 
+            value="A-"
+            required 
+            class="mt-1 w-full p-2 bg-zinc-700 text-white border border-zinc-600 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500" />
+        </div>
+        
+        
+        <div>
+          <label for="gcodeMachineTwo" class="block text-sm font-medium text-zinc-300">G-код</label>
+          <textarea 
+            id="gcodeMachineTwo" 
+            name="gcodeMachineTwo" 
+            rows="6"
+            class="mt-1 w-full p-2 bg-zinc-700 text-white border border-zinc-600 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500 resize-y"
+            placeholder="Введите фрагмент G-кода"
+          ></textarea>
+        </div>
+        
+        <div class="flex gap-2">
+          <button 
+            type="submit" 
+            class="bg-sky-600 text-white px-6 py-3 rounded-xl border-t border-sky-400 hover:bg-sky-700 transition flex items-center justify-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap-icon lucide-zap"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+            <span>
+              Выполнить
+            </span>
+          </button>
+          <button>
+          <button 
+            type="button" 
+            class="bg-red-600 text-white px-6 py-3 rounded-xl border-t border-red-400 hover:bg-red-700 transition flex items-center justify-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-ccw-icon lucide-refresh-ccw"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg>
+            <span>
+              Обнулить
+            </span>
+          </button>
+          <button>
+
+        </div>
+      </form>
+          </form>
+        </div>
+      </div>
+
+      
+      
+    </div>
+
+    <div class="flex w-full">
+      <code 
+        id="output" 
+        class="max-h-screen h-full w-full overflow-y-auto bg-zinc-700 text-white p-4"
+      ></code>
+      <button 
+      type="button" 
+      id="copy-btn"
+      class="fixed bottom-6 right-6 bg-yellow-600 text-white px-6 py-3 rounded-xl border-t border-yellow-400 hover:bg-yellow-700 transition flex items-center justify-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy-icon lucide-copy"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+      <span>
+        Копировать
+      </span>
+    </button>
+    </div>
+    
+
+  </div>
+</body>
+</html>
